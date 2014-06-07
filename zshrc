@@ -174,7 +174,7 @@ function realpath() {
 }
 
 function trash {
-    mv $* ~/.Trash
+  mv $* ~/.Trash
 }
 
 function h {
