@@ -119,6 +119,7 @@ export GREP_OPTIONS='--color'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
+alias ln='ln -i'
 
 # move about easier
 alias ..='cd ..'
@@ -130,6 +131,7 @@ alias e='${EDITOR}'
 alias x='exit'
 alias q='exit'
 alias c='clear'
+alias ll='ls -l'
 alias zz='exec zsh -l'             # new zsh, -l is for login shell
 
 # do things
