@@ -58,8 +58,16 @@ source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWDIRTYSTATE=1
 
+# Adapted from http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
+function prompt_char {
+    git branch >/dev/null 2>&1 && echo '€' && return
+    svn info >/dev/null 2>&1 && echo '$' && return
+    test -s CVS/Root >/dev/null 2>&1 && echo '¢' && return
+    echo '%#'
+}
+
 # Set the prompts
-PROMPT=$'[%h|%T$(__git_ps1 "|%%B%s%%b")]%# '
+PROMPT='[%h|%T$(__git_ps1 "|%%B%s%%b")]$(prompt_char) '
 RPROMPT='%n@%m:%/'
 
 #Set the window title
@@ -232,6 +240,7 @@ if [[ -z $SSH_CONNECTION ]]; then
 
 alias sss='open /System/Library/Frameworks/Screensaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
 
+# make this not run in screen
 color-fg.sh        # randomize the terminal color on login
 
 # function o {
