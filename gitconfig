@@ -1,0 +1,10 @@
+[user]
+	name = nine9ths
+	email = nine9ths@users.noreply.github.com
+[alias]
+	co = checkout
+        ci = commit
+        stat = status
+	viz = !git log --graph --all --decorate --oneline --date-order --color $* | tail -r | tr '\\\\/' '/\\\\' && :
+[push]
+	default = simple
