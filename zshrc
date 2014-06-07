@@ -1,19 +1,19 @@
 # Behavior options
-setopt NO_BEEP                  # stop the insanity
-setopt AUTO_MENU                # <TAB> once for listing <TAB> again to cycle
-setopt PROMPT_SUBST             # use vars in $prompt
-setopt MULTIOS                  # allow multiple > or <
-setopt NO_FLOW_CONTROL          # ctrl-s won't freeze the terminal anymore
+setopt NO_BEEP                     # stop the insanity
+setopt AUTO_MENU                   # <TAB> once for listing <TAB> again to cycle
+setopt PROMPT_SUBST                # use vars in $prompt
+setopt MULTIOS                     # allow multiple > or <
+setopt NO_FLOW_CONTROL             # ctrl-s won't freeze the terminal anymore
 
 # Completion options
-setopt NO_AUTO_REMOVE_SLASH     # don't remove slash at end of command
-setopt COMPLETE_IN_WORD         # complete from cursor at both ends
+setopt NO_AUTO_REMOVE_SLASH        # don't remove slash at end of command
+setopt COMPLETE_IN_WORD            # complete from cursor at both ends
 
 # Globbing options
-setopt EXTENDED_GLOB            # extra globbing syntax options
-setopt NO_NOMATCH               # warn on bad multi glob instead of error
-setopt CSH_NULL_GLOB            # warn only on entirely bad multi globs
-setopt NUMERIC_GLOB_SORT        # numeric filenames are sorted numerically
+setopt EXTENDED_GLOB               # extra globbing syntax options
+setopt NO_NOMATCH                  # warn on bad multi glob instead of error
+setopt CSH_NULL_GLOB               # warn only on entirely bad multi globs
+setopt NUMERIC_GLOB_SORT           # numeric filenames are sorted numerically
 
 # History options
 setopt APPEND_HISTORY              # new history lines are added to $HISTFILE on exit
@@ -42,8 +42,6 @@ setopt MARK_DIRS                   # append `/' to directory names resulting fro
 #setopt TRANSIENT_RPROMPT          # remove the rprompt after the command is entered
 #setopt INC_APPEND_HISTORY         # new history lines are added to $HISTFILE incrementally instead of on exit
 #setopt EXTENDED_HISTORY           # history reports extra info but breaks .history compatibility with other shells
-#setopt MARK_DIRS                  # Append / to directory names resulting from globbing
-
 
 # autoload colors zsh/terminfo
 # if [[ "$terminfo[colors]" -ge 8 ]]; then
@@ -54,8 +52,8 @@ setopt MARK_DIRS                   # append `/' to directory names resulting fro
 source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
 
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
-#GIT_PS1_SHOWUPSTREAM="auto"
-#GIT_PS1_SHOWDIRTYSTATE=1
+# GIT_PS1_SHOWUPSTREAM="auto"
+# GIT_PS1_SHOWDIRTYSTATE=1
 
 # Adapted from http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 function prompt_char {
@@ -73,8 +71,8 @@ function prompt_char {
 PROMPT='[%h|%T$(__git_ps1 "|%%B%s%%b")]$(prompt_char) '
 RPROMPT='%n@%m:%/'
 
-#Set the window title
 precmd () {
+  # Set the window title
   print -Pn "\e]0;%n@%m\a"
 }
 
@@ -205,12 +203,6 @@ function calc {
 }
 
 alias calc='noglob calc'
-
-function title {
-  print "\e]0;$*\a"
-}
-
-alias title='noglob title'
 
 # These should all be rewritten to use xml tools
 function xqy {
