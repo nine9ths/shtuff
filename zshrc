@@ -22,7 +22,6 @@ setopt HIST_IGNORE_ALL_DUPS        # duplicates are replaced with new commands
 #setopt HIST_FIND_NO_DUPS          # don't find duplicate commands in history
 #setopt HIST_SAVE_NO_DUPS          # don't write duplicate commands in history
 
-
 # cd/pushd options
 setopt AUTO_CD                     # typing a directory goes to that directory
 setopt CD_ABLE_VARS                # omit $ from vars with paths
@@ -33,7 +32,7 @@ setopt PUSHD_IGNORE_DUPS           # don't push dup directories onto the directo
 setopt PUSHD_SILENT                # don't print the directory stack after pushd or popd.
 setopt PUSHD_TO_HOME               # have pushd with no arguments act like `pushd $HOME'.
 setopt MARK_DIRS                   # append `/' to directory names resulting from globbing
-			           
+
 # Unadopted options	           
 #setopt NO_HUP                     # don't terminate processes on exit
 #setopt GLOB_DOTS                  # leading `.' in a filename matched implicitly
@@ -55,24 +54,28 @@ setopt MARK_DIRS                   # append `/' to directory names resulting fro
 source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
 
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
-GIT_PS1_SHOWUPSTREAM="auto"
-GIT_PS1_SHOWDIRTYSTATE=1
+#GIT_PS1_SHOWUPSTREAM="auto"
+#GIT_PS1_SHOWDIRTYSTATE=1
 
 # Adapted from http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 function prompt_char {
-    git branch >/dev/null 2>&1 && echo '€' && return
-    svn info >/dev/null 2>&1 && echo '$' && return
-    test -s CVS/Root >/dev/null 2>&1 && echo '¢' && return
-    echo '%#'
+  test $STY >/dev/null 2>&1 && echo -n $WINDOW | tr '0123456789' '⁰¹²³⁴⁵⁶⁷⁸⁹'
+  git branch >/dev/null 2>&1 && echo '€' && return
+  svn info >/dev/null 2>&1 && echo '$' && return
+  test -s CVS/Root >/dev/null 2>&1 && echo '¢' && return
+  echo '%#'
 }
 
+# Adding faint to prompt %{\e[02m%}faint text%{\e[0m%}
+
+# use psvar for this?
 # Set the prompts
 PROMPT='[%h|%T$(__git_ps1 "|%%B%s%%b")]$(prompt_char) '
 RPROMPT='%n@%m:%/'
 
 #Set the window title
 precmd () {
-	print -Pn "\e]0;%n@%m\a"
+  print -Pn "\e]0;%n@%m\a"
 }
 
 HISTSIZE=500
@@ -178,9 +181,9 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # alias less="less_or_ls"
 
 function realpath() {
-    for f in "$@";
-    do echo ${f}(:A);
-    done
+  for f in "$@";
+  do echo ${f}(:A);
+  done
 }
 
 function trash {
@@ -188,44 +191,44 @@ function trash {
 }
 
 function h {
-    if [[ $# == 0 ]]; then
-        history 1 | grep -Ev '[[:digit:]] +(h|history)( |$)'
-    else
-        history 1 | grep -i $* | grep -Ev '[[:digit:]] +(h|history)( |$)'
-    fi
+  if [[ $# == 0 ]]; then
+    history 1 | grep -Ev '[[:digit:]] +(h|history)( |$)'
+  else
+    history 1 | grep -i $* | grep -Ev '[[:digit:]] +(h|history)( |$)'
+  fi
 }
 
 alias h="noglob h"
 
 function calc {
-	python3 -c "from math import *;print($*)"
+  python3 -c "from math import *;print($*)"
 }
 
 alias calc='noglob calc'
 
 function title {
-    print "\e]0;$*\a"
+  print "\e]0;$*\a"
 }
 
 alias title='noglob title'
 
 # These should all be rewritten to use xml tools
 function xqy {
-    saxon.sh -xqy -s $1 {$*[2,-1]}
+  saxon.sh -xqy -s $1 {$*[2,-1]}
 }
 
 alias xqy="noglob xqy"
 
 function tag {
-    perl -0ne 's/(\n*\r\n*)+/\n/g;print qq/$ARGV:\n/;while(m{(<'$1'[^-].*?</'$1'>)}sigc){print qq/$1\n/}' $*[2,-1]
+  perl -0ne 's/(\n*\r\n*)+/\n/g;print qq/$ARGV:\n/;while(m{(<'$1'[^-].*?</'$1'>)}sigc){print qq/$1\n/}' $*[2,-1]
 }
 
 function tage {
-    perl -0ne 's/[\r\n]//g;while(m{(<'$1'[^-].*?>)}sigc){print qq/$ARGV: $1\n/}' $*[2,-1]
+  perl -0ne 's/[\r\n]//g;while(m{(<'$1'[^-].*?>)}sigc){print qq/$ARGV: $1\n/}' $*[2,-1]
 }
 
 function tagg {
-    perl -0ne 's/\s+/ /g;while(m{(<'$1'[^-].*?</'$1'>)}sigc){print qq/$ARGV: $1\n/}' $*[2,-1]
+  perl -0ne 's/\s+/ /g;while(m{(<'$1'[^-].*?</'$1'>)}sigc){print qq/$ARGV: $1\n/}' $*[2,-1]
 }
 
 function tagx {
@@ -240,23 +243,25 @@ if [[ -z $SSH_CONNECTION ]]; then
 
 alias sss='open /System/Library/Frameworks/Screensaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
 
-# make this not run in screen
-color-fg.sh        # randomize the terminal color on login
+# randomize the terminal color if not a screen
+if [[ -z $STY ]]; then
+  color-fg.sh
+fi
 
 # function o {
-#     #this is bugged for pipes
-#     if [[ $# == 0 ]]; then
-#         open .
-#     else
-#         open $*
-#     fi
+#   #this is bugged for pipes
+#   if [[ $# == 0 ]]; then
+#     open .
+#   else
+#     open $*
+#   fi
 # }
 # 
 # alias open='o'
 
 # will open a new terminal window and do command args
 function  new {
-    arch -i386 osascript -e "tell window 1 of application \"Terminal\" to do script \"$*\""
+  arch -i386 osascript -e "tell window 1 of application \"Terminal\" to do script \"$*\""
 }
 
 fi
