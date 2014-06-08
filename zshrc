@@ -98,11 +98,10 @@ export XML_CATALOG_FILES="${HOME}/Work/svn/code/schemas/catalog.xml"
 
 source ~/.cvsprofile
 
-#setenv() { export $1=$2 }      # csh compatibility
-
 #Should this go in ~/.hosts
 hosts=( auguste lions slackwire marklogic-prod-1 marklogic-dev-1 babel-xslt-test babel-xslt-{19..36} )
 
+# Keybindings
 
 bindkey -e               # emacs key bindings
 # bindkey -m             # binds ESC to META and disables multibyte support
@@ -227,6 +226,8 @@ function tagx {
   report=$(perl -0ne 's/\s+/ /sg;print qq/<file path="$ARGV">/;while(m{(<'$1'[^-].*?</'$1'>)}sigc){print qq/<fragment>$1<\/fragment>/};print qq/<\/file>\n/' $*[2,-1])
   echo "<report>$report</report>" | xmllint --format -
 }
+
+#setenv() { export $1=$2 }      # csh compatibility
 
 
 
