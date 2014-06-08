@@ -1,3 +1,4 @@
+# from https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 # bash/zsh git prompt support
 #
 # Copyright (C) 2006,2007 Shawn O. Pearce <spearce@spearce.org>
@@ -198,13 +199,13 @@ __git_ps1_show_upstream ()
 		"") # no upstream
 			p="" ;;
 		"0	0") # equal to upstream
-			p=" u=" ;;
+			p="" ;;
 		"0	"*) # ahead of upstream
-			p=" u+${count#0	}" ;;
+			p="↑${count#0	}" ;;
 		*"	0") # behind upstream
-			p=" u-${count%	0}" ;;
+			p="↓${count%	0}" ;;
 		*)	    # diverged from upstream
-			p=" u+${count#*	}-${count%	*}" ;;
+			p="↑${count#*	}↓${count%	*}" ;;
 		esac
 		if [[ -n "$count" && -n "$name" ]]; then
 			p="$p $(git rev-parse --abbrev-ref "$upstream" 2>/dev/null)"
