@@ -98,9 +98,6 @@ export XML_CATALOG_FILES="${HOME}/Work/svn/code/schemas/catalog.xml"
 
 source ~/.cvsprofile
 
-#Should this go in ~/.hosts
-hosts=( auguste lions slackwire marklogic-prod-1 marklogic-dev-1 babel-xslt-test babel-xslt-{19..36} )
-
 # Keybindings
 
 bindkey -e               # emacs key bindings
@@ -157,8 +154,19 @@ alias mmv='noglob zmv -W'
 autoload -U compinit
 compinit
 
-zstyle '*' hosts $hosts
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+#Should this go in ~/.hosts
+hosts=( auguste lions slackwire marklogic-prod-1 marklogic-dev-1 babel-xslt-test babel-xslt-{19..36} )
+zstyle '*' hosts $hosts
+
+# Adapted from http://zshwiki.org/home/examples/compsys/hostnames
+# local _myhosts
+# if [[ -f $HOME/.ssh/known_hosts ]]; then
+#   _myhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} )
+#   zstyle ':completion:*' hosts $_myhosts
+# fi
+
 
 ### Functions #should be moved elsewhere eventually
 
