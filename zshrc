@@ -49,10 +49,10 @@ setopt MARK_DIRS                   # append `/' to directory names resulting fro
 # fi
 
 # Load functions to put git branch data in prompt
-source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
-
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
-# GIT_PS1_SHOWUPSTREAM="auto"
+source ~/bin/git-prompt.sh
+
+GIT_PS1_SHOWUPSTREAM="verbose"
 # GIT_PS1_SHOWDIRTYSTATE=1
 
 # Adapted from http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
