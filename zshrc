@@ -262,8 +262,10 @@ fi
 
 # will open a new terminal window and do command args
 function  new {
-  arch -i386 osascript -e "tell window 1 of application \"Terminal\" to do script \"$*\""
+  osascript -e "tell window 1 of application \"Terminal\" to do script \"$*\""
 }
+
+alias new="noglob new"
 
 fi
 
