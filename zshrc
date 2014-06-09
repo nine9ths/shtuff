@@ -31,18 +31,18 @@ setopt PUSHD_TO_HOME               # have pushd with no arguments act like `push
 setopt MARK_DIRS                   # append `/' to directory names resulting from globbing
 
 # Unadopted options
-#setopt NO_HUP                     # don't terminate processes on exit
-#setopt GLOB_DOTS                  # leading `.' in a filename matched implicitly
-#setopt NO_CLOBBER                 # don't overwrite existing files with redirection
-#setopt HISTORY_ALLOW_CLOBBER      # if NO_CLOBBER is set to make error correction easier
-#setopt CHASE_LINKS                # don't use symbolic links in $cwd
-#setopt TRANSIENT_RPROMPT          # remove the rprompt after the command is entered
-#setopt INC_APPEND_HISTORY         # new history lines are added to $HISTFILE incrementally instead of on exit
-#setopt EXTENDED_HISTORY           # history reports extra info but breaks .history compatibility with other shells
-                                   # set these if HIST_IGNORE_ALL_DUPS is unset 
-#setopt HIST_EXPIRE_DUPS_FIRST     # get rid of duplicates first when history overflows
-#setopt HIST_FIND_NO_DUPS          # don't find duplicate commands in history
-#setopt HIST_SAVE_NO_DUPS          # don't write duplicate commands in history
+# setopt NO_HUP                     # don't terminate processes on exit
+# setopt GLOB_DOTS                  # leading `.' in a filename matched implicitly
+# setopt NO_CLOBBER                 # don't overwrite existing files with redirection
+# setopt HISTORY_ALLOW_CLOBBER      # if NO_CLOBBER is set to make error correction easier
+# setopt CHASE_LINKS                # don't use symbolic links in $cwd
+# setopt TRANSIENT_RPROMPT          # remove the rprompt after the command is entered
+# setopt INC_APPEND_HISTORY         # new history lines are added to $HISTFILE incrementally instead of on exit
+# setopt EXTENDED_HISTORY           # history reports extra info but breaks .history compatibility with other shells
+#                                   # set these if HIST_IGNORE_ALL_DUPS is unset 
+# setopt HIST_EXPIRE_DUPS_FIRST     # get rid of duplicates first when history overflows
+# setopt HIST_FIND_NO_DUPS          # don't find duplicate commands in history
+# setopt HIST_SAVE_NO_DUPS          # don't write duplicate commands in history
 
 
 # autoload colors zsh/terminfo
@@ -59,7 +59,7 @@ function __screen_num {
 source ~/bin/git-prompt.sh
 
 GIT_PS1_SHOWUPSTREAM="verbose"
-#GIT_PS1_SHOWDIRTYSTATE=1
+# GIT_PS1_SHOWDIRTYSTATE=1
 
 # Adapted from http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 function __prompt_char {
@@ -82,8 +82,8 @@ precmd () {
 }
 
 HISTSIZE=500
-#SAVEHIST=200
-#HISTFILE=~/.history
+# SAVEHIST=200
+# HISTFILE=~/.history
 
 manpath=( /opt/local/man /usr/local/man $manpath )
 typeset -gxU manpath
@@ -104,19 +104,18 @@ export XML_CATALOG_FILES="${HOME}/Work/svn/code/schemas/catalog.xml"
 source ~/.cvsprofile
 
 # Keybindings
-
 bindkey -e               # emacs key bindings
 # bindkey -m             # binds ESC to META and disables multibyte support
 # bindkey -v             # vi key bindings
 
-bindkey ' '    magic-space         # also do history expansion on space
-bindkey '^ '   set-mark-command    # like emacs also ^@ by default
-bindkey '^X?'  expand-cmd-path     # like tcsh
-bindkey '^w'   kill-region         # like emacs
-bindkey '^[k'  backward-kill-line  # like emacs
-bindkey '^[^?' backward-kill-word  # like emacs
-bindkey "^[^p" history-beginning-search-backward
-bindkey "^[^n" history-beginning-search-forward
+bindkey ' '    magic-space                        # also do history expansion on space
+bindkey '^ '   set-mark-command                   # like emacs also ^@ by default
+bindkey '^X?'  expand-cmd-path                    # like tcsh
+bindkey '^w'   kill-region                        # like emacs
+bindkey '^[k'  backward-kill-line                 # ⌥k
+bindkey '^[^?' backward-kill-word                 # ⌥⌫
+bindkey "^[^p" history-beginning-search-backward  # ⌥⇧p completes line from history
+# bindkey "^[^n" history-beginning-search-forward # ⌥⇧n completes line from future
 
 # Colorize terminal
 export CLICOLOR=1;
@@ -125,7 +124,7 @@ export LSCOLORS='hxgxbxdxcxFxFxCxCxHxhx'
 export LS_COLORS='di=37:ln=36:so=31:pi=33:ex=32:bd=1;35:cd=1;35:su=1;32:sg=1;32:tw=1;37:ow=37'
 export GREP_OPTIONS='--color'
 
-# Speak loudly, and carry a small stick
+# Speak loudly and carry a small stick
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
@@ -171,13 +170,13 @@ fi
 ### Functions #should be moved elsewhere eventually
 
 # cp function to cp -f if set cp -i if not
-#alias cpf='\cp -fv' # just in case
+# alias cpf='\cp -fv' # just in case
 
+# this is bugged for pipes
 # function less_or_ls {
-#     #this is bugged for pipes
 #     if [[ $# == 0 ]]; then
 #         ls .
-# #add or for dirs
+# # add or for dirs
 #     else
 #         less $*
 #     fi
@@ -211,13 +210,14 @@ function calc {
 
 alias calc='noglob calc'
 
+# This needs a newer version of saxon
+# function xqy {
+#   saxon.sh -xqy -s $1 {$*[2,-1]}
+# }
+# 
+# alias xqy="noglob xqy"
+
 # These should all be rewritten to use xml tools
-function xqy {
-  saxon.sh -xqy -s $1 {$*[2,-1]}
-}
-
-alias xqy="noglob xqy"
-
 function tag {
   perl -0ne 's/(\n*\r\n*)+/\n/g;print qq/$ARGV:\n/;while(m{(<'$1'[^-].*?</'$1'>)}sigc){print qq/$1\n/}' $*[2,-1]
 }
@@ -235,7 +235,7 @@ function tagx {
   echo "<report>$report</report>" | xmllint --format -
 }
 
-#setenv() { export $1=$2 }      # csh compatibility
+# setenv() { export $1=$2 }      # csh compatibility
 
 
 
@@ -249,8 +249,8 @@ if [[ -z $STY ]]; then
   color-fg.sh
 fi
 
+# this is bugged for pipes
 # function o {
-#   #this is bugged for pipes
 #   if [[ $# == 0 ]]; then
 #     open .
 #   else
