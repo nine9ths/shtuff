@@ -18,9 +18,6 @@ setopt NUMERIC_GLOB_SORT           # numeric filenames are sorted numerically
 # History options
 setopt APPEND_HISTORY              # new history lines are added to $HISTFILE on exit
 setopt HIST_IGNORE_ALL_DUPS        # duplicates are replaced with new commands
-#setopt HIST_EXPIRE_DUPS_FIRST     # get rid of duplicates first when history overflows
-#setopt HIST_FIND_NO_DUPS          # don't find duplicate commands in history
-#setopt HIST_SAVE_NO_DUPS          # don't write duplicate commands in history
 
 # cd/pushd options
 setopt AUTO_CD                     # typing a directory goes to that directory
@@ -33,7 +30,7 @@ setopt PUSHD_SILENT                # don't print the directory stack after pushd
 setopt PUSHD_TO_HOME               # have pushd with no arguments act like `pushd $HOME'.
 setopt MARK_DIRS                   # append `/' to directory names resulting from globbing
 
-# Unadopted options	           
+# Unadopted options
 #setopt NO_HUP                     # don't terminate processes on exit
 #setopt GLOB_DOTS                  # leading `.' in a filename matched implicitly
 #setopt NO_CLOBBER                 # don't overwrite existing files with redirection
@@ -42,6 +39,11 @@ setopt MARK_DIRS                   # append `/' to directory names resulting fro
 #setopt TRANSIENT_RPROMPT          # remove the rprompt after the command is entered
 #setopt INC_APPEND_HISTORY         # new history lines are added to $HISTFILE incrementally instead of on exit
 #setopt EXTENDED_HISTORY           # history reports extra info but breaks .history compatibility with other shells
+                                   # set these if HIST_IGNORE_ALL_DUPS is unset 
+#setopt HIST_EXPIRE_DUPS_FIRST     # get rid of duplicates first when history overflows
+#setopt HIST_FIND_NO_DUPS          # don't find duplicate commands in history
+#setopt HIST_SAVE_NO_DUPS          # don't write duplicate commands in history
+
 
 # autoload colors zsh/terminfo
 # if [[ "$terminfo[colors]" -ge 8 ]]; then
@@ -53,7 +55,7 @@ setopt MARK_DIRS                   # append `/' to directory names resulting fro
 source ~/bin/git-prompt.sh
 
 GIT_PS1_SHOWUPSTREAM="verbose"
-# GIT_PS1_SHOWDIRTYSTATE=1
+#GIT_PS1_SHOWDIRTYSTATE=1
 
 # Adapted from http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 function prompt_char {
@@ -68,7 +70,7 @@ function prompt_char {
 
 # use psvar for this?
 # Set the prompts
-PROMPT='[%h|%T$(__git_ps1 "|%%B%s%%b")]$(prompt_char) '
+PROMPT='[%h|%T$(__git_ps1 "|%s")]$(prompt_char) '
 RPROMPT='%n@%m:%/'
 
 precmd () {
@@ -77,11 +79,11 @@ precmd () {
 }
 
 HISTSIZE=500
-#SAVEHIST=200                   # save history file
+#SAVEHIST=200
 #HISTFILE=~/.history
 
 manpath=( /opt/local/man /usr/local/man $manpath )
-typeset -U path manpath               # uniquify paths
+typeset -gxU manpath
 
 export LANG='en_US.UTF-8'
 export LC_CTYPE='en_US.UTF-8'
@@ -158,8 +160,8 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # Adapted from http://zshwiki.org/home/examples/compsys/hostnames
 local hosts
-if [[ -f $HOME/.hosts ]]; then
-  hosts=($(paste -sd' ' $HOME/.hosts))
+if [[ -f ~/.hosts ]]; then
+  hosts=($(paste -sd' ' ~/.hosts))
   zstyle ':completion:*' hosts $hosts
 fi
 
