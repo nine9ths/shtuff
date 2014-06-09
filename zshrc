@@ -50,6 +50,10 @@ setopt MARK_DIRS                   # append `/' to directory names resulting fro
 #   colors
 # fi
 
+function __screen_num {
+  test $STY >/dev/null 2>&1 && echo -n $WINDOW | tr '0123456789' '⁰¹²³⁴⁵⁶⁷⁸⁹'
+}
+
 # Load functions to put git branch data in prompt
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 source ~/bin/git-prompt.sh
@@ -58,11 +62,10 @@ GIT_PS1_SHOWUPSTREAM="verbose"
 #GIT_PS1_SHOWDIRTYSTATE=1
 
 # Adapted from http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
-function prompt_char {
-  test $STY >/dev/null 2>&1 && echo -n $WINDOW | tr '0123456789' '⁰¹²³⁴⁵⁶⁷⁸⁹'
-  git branch >/dev/null 2>&1 && echo '€' && return
-  svn info >/dev/null 2>&1 && echo '$' && return
-  test -s CVS/Root >/dev/null 2>&1 && echo '¢' && return
+function __prompt_char {
+  git branch >/dev/null 2>&1 && echo '%B€%b' && return
+  svn info >/dev/null 2>&1 && echo '%B$%b' && return
+  test -s CVS/Root >/dev/null 2>&1 && echo '%B¢%b' && return
   echo '%#'
 }
 
@@ -70,7 +73,7 @@ function prompt_char {
 
 # use psvar for this?
 # Set the prompts
-PROMPT='[%h|%T$(__git_ps1 "|%s")]$(prompt_char) '
+PROMPT='[%h$(__screen_num)|%T]$(__git_ps1 "%%B(%s)%%b")$(__prompt_char) '
 RPROMPT='%n@%m:%/'
 
 precmd () {
