@@ -1,4 +1,8 @@
-# from https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+# from:
+#   https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+# with changes adapted from:
+#   https://github.com/olivierverdier/zsh-git-prompt
+#
 # bash/zsh git prompt support
 #
 # Copyright (C) 2006,2007 Shawn O. Pearce <spearce@spearce.org>
@@ -54,8 +58,8 @@
 # enabled.
 #
 # If you would like to see the difference between HEAD and its upstream,
-# set GIT_PS1_SHOWUPSTREAM="auto".  A "<" indicates you are behind, ">"
-# indicates you are ahead, "<>" indicates you have diverged and "="
+# set GIT_PS1_SHOWUPSTREAM="auto".  A "↑" indicates you are behind, "↓"
+# indicates you are ahead, "↑↓" indicates you have diverged and "◊"
 # indicates that there is no difference. You can further control
 # behaviour by setting GIT_PS1_SHOWUPSTREAM to a space-separated list
 # of values:
@@ -186,20 +190,20 @@ __git_ps1_show_upstream ()
 		"") # no upstream
 			p="" ;;
 		"0	0") # equal to upstream
-			p="=" ;;
+			p="◊" ;;
 		"0	"*) # ahead of upstream
-			p=">" ;;
+			p="↑" ;;
 		*"	0") # behind upstream
-			p="<" ;;
+			p="↓" ;;
 		*)	    # diverged from upstream
-			p="<>" ;;
+			p="↑↓" ;;
 		esac
 	else
 		case "$count" in
 		"") # no upstream
 			p="" ;;
 		"0	0") # equal to upstream
-			p="" ;;
+			p="◊" ;;
 		"0	"*) # ahead of upstream
 			p="↑${count#0	}" ;;
 		*"	0") # behind upstream
@@ -440,7 +444,7 @@ __git_ps1 ()
 	fi
 
 	local f="$w$i$s$u"
-	local gitstring="$c${b##refs/heads/}${f:+$z$f}$r$p"
+	local gitstring="$c${b##refs/heads/}$p${f:+$z$f}$r"
 
 	if [ $pcmode = yes ]; then
 		if [ "${__git_printf_supports_v-}" != yes ]; then
