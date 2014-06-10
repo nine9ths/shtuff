@@ -154,6 +154,10 @@ alias epoch='date "+%s"'
 autoload -U zmv
 alias mmv='noglob zmv -W'
 
+# Words are alphanumeric
+autoload -U select-word-style
+select-word-style bash
+
 # setup completion system
 autoload -U compinit
 compinit
