@@ -77,8 +77,15 @@ PROMPT='[%h$(__screen_num)|%T]$(__git_ps1 "%%B(%s)%%b")$(__prompt_char) '
 RPROMPT='%n@%m:%/'
 
 precmd () {
-  # Set the window title
-  print -Pn "\e]0;%n@%m\a"
+  # Set the window title to 'user@machine — zsh'
+  print -Pn "\e]0;%n@%m — $SHELL:t\a"
+}
+
+# http://zshwiki.org/home/examples/hardstatus
+preexec () {
+  # Set the window title to 'process'
+  local -a cmd; cmd=(${(z)1})
+  print -Pn "\e]0;$cmd[1]\a"
 }
 
 HISTSIZE=500
@@ -272,4 +279,3 @@ function  new {
 alias new="noglob new"
 
 fi
-
