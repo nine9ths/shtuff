@@ -147,7 +147,7 @@ alias e='${EDITOR}'
 alias x='exit'
 alias q='exit'
 alias c='clear'
-alias ll='ls -l'
+alias ll='ls -lh'
 alias zz='exec zsh -l'             # new zsh, -l is for login shell
 
 # do things
