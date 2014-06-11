@@ -63,8 +63,8 @@ GIT_PS1_SHOWUPSTREAM="verbose"
 
 # Adapted from http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 function __prompt_char {
-  git branch >/dev/null 2>&1 && echo '%B€%b' && return
-  svn info >/dev/null 2>&1 && echo '%B$%b' && return
+  git rev-parse --git-dir >/dev/null 2>&1 && echo '%B€%b' && return
+  svn info --depth=empty >/dev/null 2>&1 && echo '%B$%b' && return
   test -s CVS/Root >/dev/null 2>&1 && echo '%B¢%b' && return
   echo '%#'
 }
