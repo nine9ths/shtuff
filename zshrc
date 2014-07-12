@@ -92,6 +92,8 @@ HISTSIZE=500
 # SAVEHIST=200
 # HISTFILE=~/.history
 
+REPORTTIME=5
+
 manpath=( /opt/local/man /usr/local/man $manpath )
 typeset -gxU manpath
 
