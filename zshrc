@@ -173,6 +173,8 @@ compinit
 
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
+source ~/bin/git-hubflow-completion.zsh
+
 # Adapted from http://zshwiki.org/home/examples/compsys/hostnames
 local hosts
 if [[ -f ~/.hosts ]]; then
