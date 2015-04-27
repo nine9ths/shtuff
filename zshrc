@@ -283,3 +283,5 @@ function  new {
 alias new="noglob new"
 
 fi
+
+source ~/.workprofile
