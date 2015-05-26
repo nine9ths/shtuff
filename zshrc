@@ -108,7 +108,7 @@ export GIT_PAGER='/bin/cat'
 
 export FTP_PASSIVE=1
 
-export XML_CATALOG_FILES="${HOME}/Work/svn/code/schemas/catalog.xml"
+export XML_CATALOG_FILES="${HOME}/Work/git/xml-schema/catalog.xml"
 
 source ~/.cvsprofile
 
