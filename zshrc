@@ -100,11 +100,11 @@ typeset -gxU manpath
 export LANG='en_US.UTF-8'
 export LC_CTYPE='en_US.UTF-8'
 
-export EDITOR='/usr/bin/emacs'
-export PAGER='/usr/bin/more'
-export MANPAGER='/usr/bin/ul'
+export EDITOR=`which emacs`
+export PAGER=`which more`
+export MANPAGER=`which ul`
 
-export GIT_PAGER='/bin/cat'
+export GIT_PAGER=`which cat`
 
 export FTP_PASSIVE=1
 
