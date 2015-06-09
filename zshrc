@@ -74,7 +74,7 @@ function __prompt_char {
 # use psvar for this?
 # Set the prompts
 PROMPT='[%h$(__screen_num)|%T]$(__git_ps1 "%%B(%s)%%b")$(__prompt_char) '
-RPROMPT='%n@%m:%/'
+RPROMPT='%n@%B%m%b:%/'
 
 precmd () {
   # Set the window title to 'user@machine — zsh'
