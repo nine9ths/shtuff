@@ -199,9 +199,13 @@ fi
 
 # alias less="less_or_ls"
 
-function realpath() {
+function realpath {
   for f in "$@";
-  do echo ${f}(:A);
+    do
+        case "$OSTYPE" in
+          darwin*)  echo ${f}(:A) ;; 
+          linux*)   readlink -f $f ;;
+        esac
   done
 }
 
