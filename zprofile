@@ -1,4 +1,4 @@
-path=( /opt/local/bin /opt/local/sbin /usr/local/bin $path )
+path=( /opt/local/bin /opt/local/sbin /usr/local/bin /usr/local/sbin $path )
 
 if [[ -d ~/local/bin ]] ; then
   path=( ~/local/bin $path )
