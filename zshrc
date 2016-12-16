@@ -94,6 +94,19 @@ HISTSIZE=500
 
 REPORTTIME=5
 
+# Get the path to the directory where this file lives
+# Taken from here http://stackoverflow.com/a/246128/1796854
+SOURCE=${(%):-%x}
+while [ -h "$SOURCE" ]; do
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+SHTUFF="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+# include zsh stuff in $fpath
+fpath=($SHTUFF/zsh/completion $fpath)
+
 manpath=( /opt/local/man /usr/local/man $manpath )
 typeset -gxU manpath
 
@@ -173,7 +186,18 @@ compinit
 
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-source ~/bin/git-hubflow-completion.zsh
+# Third party completions
+
+# docker
+# wget https://raw.githubusercontent.com/docker/docker/master/contrib/completion/zsh/_docker -O $SHTUFF/zsh/completion/_docker
+# docker-compose
+# wget https://raw.githubusercontent.com/docker/compose/master/contrib/completion/zsh/_docker-compose -O $SHTUFF/zsh/completion/_docker
+
+# hubflow
+# wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/plugins/git-hubflow/git-hubflow.plugin.zsh -O $SHTUFF/zsh/completion/git-hubflow.plugin.zsh
+source $SHTUFF/zsh/completion/git-hubflow.plugin.zsh
+
+
 
 # Adapted from http://zshwiki.org/home/examples/compsys/hostnames
 local hosts
