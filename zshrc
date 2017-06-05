@@ -165,6 +165,14 @@ alias c='clear'
 alias ll='ls -lh'
 alias zz='exec zsh -l'             # new zsh, -l is for login shell
 
+# Docker
+alias dk='docker'
+alias dkc='docker-compose'
+alias dkv='docker volume'
+alias dkp='docker ps'
+alias dki='docker images'
+alias dkn='docker network'
+
 # do things
 alias bell='print -n '
 
