@@ -1,0 +1,1 @@
+https://raw.githubusercontent.com/zsh-users/zsh/master/Completion/Unix/Command/_git
