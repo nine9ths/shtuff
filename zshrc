@@ -178,6 +178,7 @@ alias bell='print -n '
 
 alias xsdate='date "+%Y-%m-%d"'
 alias xsdatetime='date "+%Y-%m-%dT%H:%M:%S%z" | sed -e "s/\(.*\)\(..\)/\1:\2/"'
+alias utc='TZ=UTC date "+%Y-%m-%dT%H:%M:%SZ"'
 alias epoch='date "+%s"'
 
 # serial move
@@ -261,7 +262,7 @@ function h {
 alias h="noglob h"
 
 function calc {
-  python3 -c "from math import *;print($*)"
+  python -c "from math import *;print($*)"
 }
 
 alias calc='noglob calc'
