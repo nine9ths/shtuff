@@ -296,7 +296,10 @@ function tagx {
 
 # setenv() { export $1=$2 }      # csh compatibility
 
-
+### Work specific stuff goes in .workprofile
+if [[ -f ~/.workprofile ]]; then
+  source ~/.workprofile
+fi
 
 ### OS X specific stuff only useful if connected locally
 if [[ -z $SSH_CONNECTION ]]; then
@@ -328,4 +331,3 @@ alias new="noglob new"
 
 fi
 
-source ~/.workprofile
