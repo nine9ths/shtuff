@@ -3,10 +3,11 @@
 	email = nine9ths@users.noreply.github.com
 [alias]
 	co = checkout
-        ci = commit
-        stat = status
+	ci = commit
+	stat = status
 	viz = !git log --graph --all --decorate --oneline --date-order --color $* | tail -r | tr '\\\\/' '/\\\\' && :
 	wdiff = diff --color-words='[-[:alnum:]\\\"\\.:=/<>]+|[^[:space:]]'
+	diffdir = difftool --dir-diff --tool=oxygendirs
 [push]
 	default = simple
 [filter "media"]
@@ -15,3 +16,18 @@
 	smudge = git media smudge %f
 [core]
 	excludesfile = /Users/nunes/.gitignore
+	autocrlf = false
+[diff]
+	tool = oxygendiff
+[merge]
+	tool = oxygendiff
+[difftool "oxygendiff"]
+	cmd =  sh '/Applications/Oxygen XML Editor/diffFiles.sh' -ext $REMOTE $LOCAL $LOCAL
+[mergetool "oxygendiff"]
+	cmd =  sh '/Applications/Oxygen XML Editor/diffFiles.sh' -ext $LOCAL $REMOTE $BASE $MERGED
+	trustExitCode = true
+[difftool "oxygendirs"]
+	cmd =  sh '/Applications/Oxygen XML Editor/diffDirs.sh' $LOCAL $REMOTE 
+	trustExitCode = true
+[difftool]
+	prompt = false
