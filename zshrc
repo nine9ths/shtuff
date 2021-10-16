@@ -123,8 +123,6 @@ export FTP_PASSIVE=1
 
 export XML_CATALOG_FILES="${HOME}/Work/git/xml-schema/catalog.xml"
 
-source ~/.cvsprofile
-
 # Keybindings
 bindkey -e               # emacs key bindings
 # bindkey -m             # binds ESC to META and disables multibyte support
@@ -295,6 +293,10 @@ function tagx {
 }
 
 # setenv() { export $1=$2 }      # csh compatibility
+
+if [[ -f ~/.cvsprofile ]]; then
+  source ~/.cvsprofile
+fi
 
 ### Work specific stuff goes in .workprofile
 if [[ -f ~/.workprofile ]]; then
