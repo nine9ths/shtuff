@@ -88,9 +88,15 @@ preexec () {
   print -Pn "\e]0;$cmd[1]\a"
 }
 
+# Save command history
+# HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+# HISTSIZE=2000
+# SAVEHIST=1000
+
+# Don't save command history
+HISTFILE=/dev/null
 HISTSIZE=500
-# SAVEHIST=200
-# HISTFILE=~/.history
+SAVEHIST=0
 
 REPORTTIME=5
 
