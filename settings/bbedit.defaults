@@ -1,0 +1,2 @@
+defaults write com.barebones.bbedit AllowTabToIndentText 1 
+defaults write com.barebones.bbedit ExtraSpaceInTextViews 2
