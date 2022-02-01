@@ -127,8 +127,6 @@ export GIT_PAGER=`which cat`
 
 export FTP_PASSIVE=1
 
-# export XML_CATALOG_FILES="${HOME}/Work/git/xml-schema/catalog.xml"
-
 # Keybindings
 bindkey -e               # emacs key bindings
 # bindkey -m             # binds ESC to META and disables multibyte support
