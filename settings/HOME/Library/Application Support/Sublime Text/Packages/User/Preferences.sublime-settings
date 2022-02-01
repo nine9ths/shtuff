@@ -1,0 +1,15 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
+{
+	"always_show_minimap_viewport": true,
+	"draw_indent_guides": true,
+	"draw_white_psace": "all",
+	"scroll_past_end": true,
+	"word_wrap": false,
+	"font_face": "SF Mono",
+	"font_size": 14,
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+}

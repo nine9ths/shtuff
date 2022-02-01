@@ -1,0 +1,3 @@
+[
+	{ "keys": ["super+enter"], "command": "open_url", "args": { "show_menu": false } },
+]
