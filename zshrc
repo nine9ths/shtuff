@@ -171,7 +171,7 @@ alias zz='exec zsh -l'             # new zsh, -l is for login shell
 
 # Docker
 alias dk='docker'
-alias dkc='docker-compose'
+alias dkc='docker compose'
 alias dkv='docker volume'
 alias dkp='docker ps'
 alias dki='docker images'
