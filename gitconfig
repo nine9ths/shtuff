@@ -1,6 +1,10 @@
 [user]
 	name = nine9ths
 	email = nine9ths@users.noreply.github.com
+
+[includeIf "gitdir:~/Work/"]
+    path = ~/.workgitconfig
+    
 [alias]
 	co = checkout
 	ci = commit
@@ -15,7 +19,7 @@
 	clean = git media clean %f
 	smudge = git media smudge %f
 [core]
-	excludesfile = /Users/nunes/.gitignore
+	excludesfile = ~/.gitignore
 	autocrlf = false
 [diff]
 	tool = oxygendiff
@@ -31,3 +35,5 @@
 	trustExitCode = true
 [difftool]
 	prompt = false
+[init]
+	defaultBranch = main
