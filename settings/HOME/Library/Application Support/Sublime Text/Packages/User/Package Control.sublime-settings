@@ -1,0 +1,13 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AlignTab",
+		"Expand Selection to Whitespace",
+		"Open URL",
+		"Sort Lines (Numerically)",
+	],
+}
