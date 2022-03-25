@@ -113,8 +113,8 @@ SHTUFF="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 # include zsh stuff in $fpath
 fpath=($SHTUFF/zsh/completion $fpath)
 
-manpath=( /opt/local/man /usr/local/man $manpath )
-typeset -gxU manpath
+#manpath=( /opt/local/man /usr/local/man $manpath )
+#typeset -gxU manpath
 
 export LANG='en_US.UTF-8'
 export LC_CTYPE='en_US.UTF-8'
