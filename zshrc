@@ -268,7 +268,7 @@ function h {
 alias h="noglob h"
 
 function calc {
-  python -c "from math import *;print($*)"
+  python3 -c "from math import *;print($*)"
 }
 
 alias calc='noglob calc'
