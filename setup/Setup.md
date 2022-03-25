@@ -1,5 +1,7 @@
 # Computer Setup
 
+It would be nice if this was all be scripted, but does not all apply to every machine, has parts that are a pain to script, and changes overtime. Documentation as compromise.
+
 ## Install XCode Commandline Tools
 
 ```
@@ -61,6 +63,7 @@ open /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/*
 
 ## Install Software
 
+
 ### BBEdit
 
 <https://www.barebones.com/products/bbedit/download.html>
@@ -87,8 +90,99 @@ cd ~/Library/Application\ Support/Sublime\ Text/Packages/
 ln -s ~/Development/shtuff/settings/Library/Application\ Support/Sublime\ Text/Packages/User
 ```
 
-### Macdown
+### MacDown
 
 ```
 brew install macdown
+```
+
+### emacs
+
+```
+brew install emacs
+```
+
+### wget
+
+```
+brew install wget
+```
+
+### lynx
+
+```
+brew install lynx
+```
+
+### git lfs
+
+```
+brew install git-lfs
+```
+
+### svn
+
+```
+brew install svn
+```
+
+### xsv
+
+```
+brew install xsv
+```
+Note: possibly superseded by <https://github.com/jqnatividad/qsv>
+
+### ffmpeg
+
+```
+brew install ffmpeg
+```
+
+### sox
+
+```
+brew install sox
+```
+
+### Visual Studio Code
+
+```
+brew install visual-studio-code
+```
+
+### CLion
+
+```
+brew install clion
+```
+
+### Go
+
+```
+brew install go
+```
+
+### Rust
+
+Use rustup
+
+### DiffMerge
+
+```
+brew install diffmerge
+```
+
+
+## App Store Apps
+
+- Easy CSV Editor
+- JSON Editor
+- Microsoft Remote Desktop
+
+## SSH Key
+
+```
+ssh-keygen -t rsa
+cat .ssh/id_rsa.pub | ssh user@remote.server "mkdir -p .ssh && cat >> .ssh/authorized_keys"
 ```
