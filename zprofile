@@ -22,4 +22,14 @@ fi
 
 typeset -gxU path
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ -d /opt/homebrew/bin/brew ]] ; then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+if [[ -f ~/.secrets ]]; then
+  source ~/.secrets
+fi
+
+if  [[ -f ~/.secrets ]]; then
+	. ~/.cargo/env
+fi
