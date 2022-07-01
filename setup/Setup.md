@@ -150,12 +150,22 @@ brew install sox
 ```
 brew install visual-studio-code
 ```
+#### Plugins
+
+#### Settings
+
 
 ### CLion
 
 ```
 brew install clion
 ```
+#### Plugins
+- SonarLint
+- Visual Studio Code Dark Plus Theme
+
+#### Settings
+File > Manage IDE Settings > Sync Settings to JetBrains Account…
 
 ### Go
 
@@ -173,12 +183,42 @@ Use rustup
 brew install diffmerge
 ```
 
+### Audacity
+```
+brew install audacity
+```
+
+### bear
+```
+brew install bear
+```
+
+### sonar-scanner
+```
+brew install sonar-scanner
+```
+
+### jq
+```
+brew install jq
+```
+
+### wget
+```
+brew install wget
+```
+
+### lynx
+```
+brew install lynx
+```
 
 ## App Store Apps
 
 - Easy CSV Editor
 - JSON Editor
 - Microsoft Remote Desktop
+- Hidden Bar
 
 ## SSH Key
 
