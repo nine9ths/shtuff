@@ -112,6 +112,11 @@ SHTUFF="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 # include zsh stuff in $fpath
 fpath=($SHTUFF/zsh/completion $fpath)
+# include brew in fpath
+if type brew &>/dev/null
+then
+  fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+fi
 
 #manpath=( /opt/local/man /usr/local/man $manpath )
 #typeset -gxU manpath
