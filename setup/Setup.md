@@ -116,62 +116,6 @@ brew install visual-studio-code
 #### Settings
 
 
-### MacDown
-
-```
-brew install macdown
-```
-
-### emacs
-
-```
-brew install emacs
-```
-
-### wget
-
-```
-brew install wget
-```
-
-### lynx
-
-```
-brew install lynx
-```
-
-### git lfs
-
-```
-brew install git-lfs
-```
-
-### svn
-
-```
-brew install svn
-```
-
-### qsv
-
-```
-brew install qsv
-```
-
-
-### ffmpeg
-
-```
-brew install ffmpeg
-```
-
-### sox
-
-```
-brew install sox
-```
-
-
 ### Go
 ```
 brew install go
@@ -181,29 +125,50 @@ brew install go
 
 Use rustup
 
-### DiffMerge
+
+### MacDown
 ```
-brew install diffmerge
+brew install macdown
 ```
 
-### Audacity
+### emacs
 ```
-brew install audacity
-```
-
-### bear
-```
-brew install bear
+brew install emacs
 ```
 
-### sonar-scanner
+### wget
 ```
-brew install sonar-scanner
+brew install wget
+```
+
+### lynx
+```
+brew install lynx
+```
+
+### svn
+```
+brew install svn
+```
+
+### qsv
+```
+brew install qsv
+```
+
+### ffmpeg
+```
+brew install ffmpeg
 ```
 
 ### jq
 ```
 brew install jq
+```
+
+### Charmbracelet tools
+```
+brew install glow gum
 ```
 
 ## App Store Apps
