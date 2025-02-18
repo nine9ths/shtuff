@@ -1,0 +1,18 @@
+# Character palette settings
+defaults write com.apple.TextInputMenu visible 1
+defaults write com.apple.CharacterPaletteIM CVStartAsLargeWindow -bool yes
+defaults write com.apple.CharacterPaletteIM CVActiveCategories -array Category-Unicode Category-Emoji Category-BoxDrawing Category-Arrows Category-CurrencySymbols Category-MathematicalSymbols Category-Latin Category-Cyrillic Category-Greek Category-Brailles Category-ISO8859_1
+
+# Dock settings
+defaults write com.apple.dock autohide -bool yes
+defaults write com.apple.dock mineffect -string scale
+defaults write com.apple.dock orientation -string left
+defaults write com.apple.Dock showhidden -bool yes
+killall Dock
+
+# Monday is first day of week
+defaults write -g AppleFirstWeekday -dict gregorian 2
+
+# 24-Hour Time
+defaults write -g AppleICUForce24HourTime -bool true
+
