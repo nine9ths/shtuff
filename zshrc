@@ -219,6 +219,8 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # golang
 # wget 'https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/plugins/golang/golang.plugin.zsh' -O $SHTUFF/zsh/completion/golang.plugin.zsh
 source $SHTUFF/zsh/completion/golang.plugin.zsh
+
+# kaf
 if [[ -x "$(command -v kaf)" ]]; then
   source <(kaf completion zsh)
 fi
