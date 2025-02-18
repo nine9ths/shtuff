@@ -208,10 +208,9 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # Third party completions
 
-# docker
-# wget https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker -O $SHTUFF/zsh/completion/_docker
-# docker-compose
-# wget https://raw.githubusercontent.com/docker/compose/master/contrib/completion/zsh/_docker-compose -O $SHTUFF/zsh/completion/_docker-compose
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/nunes/.docker/completions $fpath)
+# End of Docker CLI completions
 
 # git
 # wget 'https://raw.githubusercontent.com/zsh-users/zsh/master/Completion/Unix/Command/_git' -O $SHTUFF/zsh/completion/_git
