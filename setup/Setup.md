@@ -123,8 +123,12 @@ brew install go
 
 ### Rust
 
-Use rustup
+Use [rustup](https://rustup.rs)
 
+Assuming Apple Silicon, then:
+```
+rustup target install x86_64-apple-darwin
+```
 
 ### MacDown
 ```
