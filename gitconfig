@@ -21,6 +21,9 @@
 [core]
 	excludesfile = ~/.gitignore
 	autocrlf = false
+[diff "hex"]
+    textconv = hexdump -v -C
+    binary = true
 [diff]
 	tool = oxygendiff
 [merge]
