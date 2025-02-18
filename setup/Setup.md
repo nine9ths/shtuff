@@ -28,6 +28,9 @@ ln -s ~/Development/shtuff/zshrc .zshrc
 ln -s ~/Development/shtuff/screenrc .screenrc
 ln -s ~/Development/shtuff/gitconfig .gitconfig
 ln -s ~/Development/shtuff/gitignore .gitignore
+mkdir bin
+ln -s ~/Development/shtuff/bin/git-prompt.sh bin/
+ln -s ~/Development/shtuff/bin/color-fg.sh bin/
 ```
 
 ### Create work specific settings
