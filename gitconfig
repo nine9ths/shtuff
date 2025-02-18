@@ -10,8 +10,10 @@
 	ci = commit
 	stat = status
 	viz = !git log --graph --all --decorate --oneline --date-order --color $* | tail -r | tr '\\\\/' '/\\\\' && :
-	wdiff = diff --color-words='[-[:alnum:]\\\"\\.:=/<>]+|[^[:space:]]'
+	wdiff = diff --color-words='[^[:space:]]|.'
 	diffdir = difftool --dir-diff --tool=oxygendirs
+	wxdiff = diff --word-diff-regex='[^[:space:]]|(<[^>]*>)|([[:alnum:]]+=>[^<]*<)'
+
 [push]
 	default = simple
 [filter "media"]
