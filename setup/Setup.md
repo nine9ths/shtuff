@@ -93,6 +93,29 @@ cd ~/Library/Application\ Support/Sublime\ Text/Packages/
 ln -s ~/Development/shtuff/settings/Library/Application\ Support/Sublime\ Text/Packages/User
 ```
 
+Get list of installed packages from 
+`ls -1 ~/Library/Application\ Support/Sublime\ Text/Installed\ Packages/`
+
+Install individually with Package Control
+
+As of 2025-02 List is
+- AlignTab
+- Expand Selection to Whitespace
+- JSON Reindent
+- Open URL
+- Sort Lines (Numerically)
+
+
+### Visual Studio Code
+
+```
+brew install visual-studio-code
+```
+#### Plugins
+
+#### Settings
+
+
 ### MacDown
 
 ```
@@ -129,12 +152,12 @@ brew install git-lfs
 brew install svn
 ```
 
-### xsv
+### qsv
 
 ```
-brew install xsv
+brew install qsv
 ```
-Note: possibly superseded by <https://github.com/jqnatividad/qsv>
+
 
 ### ffmpeg
 
@@ -148,30 +171,8 @@ brew install ffmpeg
 brew install sox
 ```
 
-### Visual Studio Code
-
-```
-brew install visual-studio-code
-```
-#### Plugins
-
-#### Settings
-
-
-### CLion
-
-```
-brew install clion
-```
-#### Plugins
-- SonarLint
-- Visual Studio Code Dark Plus Theme
-
-#### Settings
-File > Manage IDE Settings > Sync Settings to JetBrains Account…
 
 ### Go
-
 ```
 brew install go
 ```
@@ -181,7 +182,6 @@ brew install go
 Use rustup
 
 ### DiffMerge
-
 ```
 brew install diffmerge
 ```
@@ -204,16 +204,6 @@ brew install sonar-scanner
 ### jq
 ```
 brew install jq
-```
-
-### wget
-```
-brew install wget
-```
-
-### lynx
-```
-brew install lynx
 ```
 
 ## App Store Apps
