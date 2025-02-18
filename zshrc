@@ -4,6 +4,7 @@ setopt AUTO_MENU                   # <TAB> once for listing <TAB> again to cycle
 setopt PROMPT_SUBST                # use vars in $prompt
 setopt MULTIOS                     # allow multiple > or <
 setopt NO_FLOW_CONTROL             # ctrl-s won't freeze the terminal anymore
+setopt MAGIC_EQUAL_SUBST           # expand ~ in 'foo=~'
 
 # Completion options
 setopt NO_AUTO_REMOVE_SLASH        # don't remove slash at end of command
@@ -118,6 +119,9 @@ then
   fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 fi
 
+# Cargo completions:
+# rustup completions zsh cargo > $HOME/Development/shtuff/zsh/completion/_cargo
+
 #manpath=( /opt/local/man /usr/local/man $manpath )
 #typeset -gxU manpath
 
@@ -211,16 +215,14 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # git
 # wget 'https://raw.githubusercontent.com/zsh-users/zsh/master/Completion/Unix/Command/_git' -O $SHTUFF/zsh/completion/_git
-# hubflow
-# wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/plugins/git-hubflow/git-hubflow.plugin.zsh -O $SHTUFF/zsh/completion/git-hubflow.plugin.zsh
 
 # golang
 # wget 'https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/plugins/golang/golang.plugin.zsh' -O $SHTUFF/zsh/completion/golang.plugin.zsh
-source $SHTUFF/zsh/completion/git-hubflow.plugin.zsh
 source $SHTUFF/zsh/completion/golang.plugin.zsh
 if [[ -x "$(command -v kaf)" ]]; then
   source <(kaf completion zsh)
 fi
+
 
 # Adapted from http://zshwiki.org/home/examples/compsys/hostnames
 local hosts
@@ -246,15 +248,15 @@ fi
 
 # alias less="less_or_ls"
 
-function realpath {
-  for f in "$@";
-    do
-        case "$OSTYPE" in
-          darwin*)  echo ${f}(:A) ;; 
-          linux*)   readlink -f $f ;;
-        esac
-  done
-}
+# function realpath {
+#   for f in "$@";
+#     do
+#         case "$OSTYPE" in
+#           darwin*)  echo ${f}(:A) ;; 
+#           linux*)   readlink -f $f ;;
+#         esac
+#   done
+# }
 
 function trash {
   mv $* ~/.Trash
@@ -341,4 +343,3 @@ function  new {
 alias new="noglob new"
 
 fi
-
