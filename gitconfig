@@ -2,7 +2,7 @@
 	name = nine9ths
 	email = nine9ths@users.noreply.github.com
 
-[includeIf "gitdir:~/Work/"]
+[includeIf "gitdir/i:**/work/**"]
     path = ~/.workgitconfig
     
 [alias]
