@@ -11,8 +11,6 @@
 	stat = status
 	viz = !git log --graph --all --decorate --oneline --date-order --color $* | tail -r | tr '\\\\/' '/\\\\' && :
 	wdiff = diff --color-words='[^[:space:]]|.'
-	diffdir = difftool --dir-diff --tool=oxygendirs
-	wxdiff = diff --word-diff-regex='[^[:space:]]|(<[^>]*>)|([[:alnum:]]+=>[^<]*<)'
 
 [push]
 	default = simple
@@ -26,20 +24,6 @@
 [diff "hex"]
     textconv = hexdump -v -C
     binary = true
-[diff]
-	tool = oxygendiff
-[merge]
-	tool = oxygendiff
-[difftool "oxygendiff"]
-	cmd =  sh '/Applications/Oxygen XML Editor/diffFiles.sh' -ext $REMOTE $LOCAL $LOCAL
-[mergetool "oxygendiff"]
-	cmd =  sh '/Applications/Oxygen XML Editor/diffFiles.sh' -ext $LOCAL $REMOTE $BASE $MERGED
-	trustExitCode = true
-[difftool "oxygendirs"]
-	cmd =  sh '/Applications/Oxygen XML Editor/diffDirs.sh' $LOCAL $REMOTE 
-	trustExitCode = true
-[difftool]
-	prompt = false
 [init]
 	defaultBranch = main
 [svn]
