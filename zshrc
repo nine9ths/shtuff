@@ -113,14 +113,21 @@ SHTUFF="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 # include zsh stuff in $fpath
 fpath=($SHTUFF/zsh/completion $fpath)
+
 # include brew in fpath
-if type brew &>/dev/null
-then
+if type brew &>/dev/null ; then
   fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 fi
 
+# Docker completions
+if [[ -d ~/.docker ]] ; then
+  fpath=($HOME/.docker/completions $fpath)
+fi
+
 # Cargo completions:
-# rustup completions zsh cargo > $HOME/Development/shtuff/zsh/completion/_cargo
+if command -v rustc >/dev/null 2>&1; then
+    fpath=("$(rustc --print sysroot)/share/zsh/site-functions" $fpath)
+fi
 
 #manpath=( /opt/local/man /usr/local/man $manpath )
 #typeset -gxU manpath
