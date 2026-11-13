@@ -216,7 +216,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # Third party completions
 
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/nunes/.docker/completions $fpath)
+fpath=($HOME/.docker/completions $fpath)
 # End of Docker CLI completions
 
 # git
@@ -255,16 +255,6 @@ fi
 # }
 
 # alias less="less_or_ls"
-
-# function realpath {
-#   for f in "$@";
-#     do
-#         case "$OSTYPE" in
-#           darwin*)  echo ${f}(:A) ;; 
-#           linux*)   readlink -f $f ;;
-#         esac
-#   done
-# }
 
 function trash {
   mv $* ~/.Trash

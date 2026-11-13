@@ -90,7 +90,7 @@ Sync settings
 
 ```
 cd ~/Library/Application\ Support/Sublime\ Text/Packages/
-ln -s ~/Development/shtuff/settings/Library/Application\ Support/Sublime\ Text/Packages/User
+ln -s ~/Development/shtuff/settings/HOME/Library/Application\ Support/Sublime\ Text/Packages/User
 ```
 
 Get list of installed packages from 
@@ -98,8 +98,8 @@ Get list of installed packages from
 
 Install individually with Package Control
 
-As of 2025-02 List is
-- AlignTab
+As of 2026-02 List is
+- Table Editor
 - Expand Selection to Whitespace
 - JSON Reindent
 - Open URL
@@ -124,11 +124,6 @@ brew install go
 ### Rust
 
 Use [rustup](https://rustup.rs)
-
-Assuming Apple Silicon, then:
-```
-rustup target install x86_64-apple-darwin
-```
 
 ### MacDown
 ```
@@ -179,8 +174,8 @@ brew install glow gum
 
 - Easy CSV Editor
 - JSON Editor
-- Microsoft Remote Desktop
-- Hidden Bar
+- Windows App
+- Obsidian Web Clipper
 
 ## SSH Key
 

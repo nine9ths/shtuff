@@ -31,3 +31,5 @@
   rmdir = true
 [http]
 	postBuffer = 157286400
+[merge]
+	conflictStyle = zdiff3

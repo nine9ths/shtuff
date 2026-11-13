@@ -1,3 +1,7 @@
+# The following lines were added by Docker Desktop to add commands to your PATH.
+export PATH="$PATH:/Users/nnunes/.docker/bin"
+# End of Docker Desktop section.
+
 path=( /opt/local/bin /opt/local/sbin /usr/local/bin /usr/local/sbin $path )
 
 if [[ -d /usr/local/opt/go/libexec/bin ]] ; then
@@ -15,6 +19,10 @@ fi
 
 if [[ -d ~/local/bin ]] ; then
   path=( ~/local/bin $path )
+fi
+
+if [[ -d ~/.local/bin ]] ; then
+  path=( ~/.local/bin $path )
 fi
 
 if [[ -d ~/bin ]] ; then

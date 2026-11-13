@@ -1,15 +1,9 @@
 {
-	"bootstrapped": true,
-	"in_process_packages":
-	[
-	],
 	"installed_packages":
 	[
-		"AlignTab",
-		"Expand Selection to Whitespace",
-		"JSON Reindent",
-		"Open URL",
-		"Package Control",
-		"Sort Lines (Numerically)",
+		"Package Control"
+	],
+	"in_process_packages":
+	[
 	],
 }
